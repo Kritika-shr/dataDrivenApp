@@ -1,0 +1,78 @@
+<div class="col-md-12">
+<div class="col-md-12">
+	<h1 style="text-align: center;">Check Ins</h1>
+	<p style="text-align: center;">Here is a list of all checked In users</p>
+	<div class="form-group" style="align:center;">
+		<input type="text" class="form-control" name="search" ng-model="query" placeholder="Search For User">
+	</div>
+	<form class="form-inline">
+	<div class="form-group">
+		<span class="label">By:</span>
+		<select class="form-control" ng-model="order">
+			<option value="firstname">First Name</option>
+			<option value="lastname">Last Name</option>
+			<option value="date">Date</option>
+		</select>
+	</div> 
+	<div class="radio">
+	    <input id="dirascending" type="radio"
+	      ng-model="direction" name="direction">
+	    <label for="dirascending">asc</label>&nbsp;
+
+	    <input id="dirdescending" type="radio"
+	      ng-model="direction" name="direction" value="reverse">
+	    <label for="dirdescending">desc</label>
+    </div>
+    	 <button ng-hide="recordId" class="btn btn-pick"
+      		ng-click="pickRandom()">Pick Random</button>
+
+    	 <button ng-show="recordId" class="btn btn-pick"
+      		ng-click="recordId=''">Reset</button>  
+   
+    </form><!--form inline-->
+<table class="table table-striped" style="margin-top: 20px;">
+	<tr colspan="3	">
+	<th>
+		Name
+	</th>
+	<th>
+		Date Of joining
+	</th>
+
+	</tr>
+	<tr ng-class="checkin.userState" ng-repeat="checkin in checkins| orderBy:order:direction | filter: { $id: recordId, $: query }">
+	<td>
+		{{ checkin.firstname }}  {{ checkin.lastname }}
+	</td>
+	<td>
+			 {{ checkin.date }}
+	</td>
+	<td ng-show="currentUser">
+		<button class="btn btn-delete" ng-click="deleteCheckin(checkin.$id)">
+			<span>Delete</span>
+		</button>
+	</td>
+
+	<td>
+		<button class="btn" ng-click="showLove(checkin)">
+		<span>
+			Love
+		</span>
+			
+		</button>
+	</td>
+	<td>
+		<div ng-show="checkin.show">
+		<form ng-submit="giveLove(checkin, checkin.giftText)" novalidate>
+			<input type="text" placeholder="What are you giving them" ng-model="checkin.giftText" ng-required="true">
+			<button type="submit" class="btn" ng-disabled="myform.$invalid">+</button>
+		</form>
+		</div>
+	</td>	
+	</tr>
+
+	</table>
+
+
+
+</div>

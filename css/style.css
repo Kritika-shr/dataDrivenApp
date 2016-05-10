@@ -1,0 +1,43 @@
+input.ng-invalid.ng-touched {
+  border: 1px solid #DA3637;
+}
+input.ng-valid.ng-touched {
+  border: 1px solid #509D12;
+}
+.ng-invalid .btn {
+  background: gray;
+}
+
+.error {
+  color: red;
+  padding-bottom: 10px;
+  text-align:center;
+}
+
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  background-color: #777;
+  border-radius: 10px;
+}
+.badge:empty {
+  display: none;
+}
+
+.errormessage{
+  color:red;
+  text-align: center;
+}
+
+.btn-delete{
+  background-color: #C94C24!important;
+ }
+
